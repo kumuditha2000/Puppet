@@ -1,25 +1,25 @@
 <?php
-$con = mysqi_connect("my_host","my_user", "my_password", "my_db");
+$con = mysqi_connect("127.0.0.1","puppet_root", "root123", "sack_web_puppet", "3306");
 
 
-$username = $_POST["phone"];
-$password = $_POST["password"];
+$phone = $_POST["Phone"];
+$password = $_POST["Password"];
 
-$statement = mysqli_prepare($con, "SELECT * FROM user WHERE username = ? AND password = ?");
+$statement = mysqli_prepare($con, "SELECT * FROM user WHERE phone = ? AND password = ?");
 mysqli_stmt_bind_param($statement, "ss", $phone, $password);
 mysqli_stmt_execute($statement);
 
 mysqli_stmt_store_result($statement);
-mysqli_stmt_bind_result($statement, $userID, $name, $phone, $password);
+mysqli_stmt_bind_result($statement, $phone, $name, $phone, $password);
 
 $response = array();
 $response["success"] = false;
 
 while(mysqli_stmt_fetch($statement)){
         $response["success"] = true
-        $response["name"] = $name;
-        $response["phone"] = $phone;
-        $response["password"] = $password;
+        $response["Name"] = $name;
+        $response["Phone"] = $phone;
+        $response["Password"] = $password;
 
  }
 
