@@ -1,5 +1,5 @@
 <?php
-$con = mysqi_connect("127.0.0.1","puppet_root", "root123", "sack_web_puppet", "3306");
+$con = mysqi_connect("127.0.0.1:3306","puppet_root", "root123", "sack_web_puppet");
 
 
 $phone = $_POST["Phone"];
