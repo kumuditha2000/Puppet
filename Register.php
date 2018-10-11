@@ -1,12 +1,12 @@
 <?php
-$con = mysqi_connect("127.0.0.1","puppet_root", "root123", "sack_web_puppet", "3306");
+$con = mysqi_connect("127.0.0.1:3306","puppet_root", "root123", "sack_web_puppet");
 
-$name = $_POST["name"];
-$phone = $_POST["phone"]
-$password = $_POST["password"];
+$Name = $_POST["Name"];
+$Phone = $_POST["Phone"]
+$Password = $_POST["Password"];
 
-$statement = mysqli_prepare($con, "INSERT INTO user (name, phone, password) VALUES (?, ?, ?)");
-mysqli_stmt_bind_param($statement, "siss", $name, $phone, $password);
+$statement = mysqli_prepare($con, "INSERT INTO user (Name, Phone, Password) VALUES (?, ?, ?)");
+mysqli_stmt_bind_param($statement, "siss", $Name, $Phone, $Password);
 mysqli_stmt_execute($statement);
 
 $response = array();
